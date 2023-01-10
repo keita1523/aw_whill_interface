@@ -17,6 +17,6 @@ rclcpp_components_register_node(aw_whill_interface
 
 ament_auto_package(
   INSTALL_TO_SHARE
-  # launch
-  # config
+  launch
+  config
 )

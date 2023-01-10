@@ -1,0 +1,11 @@
+<launch>
+  <arg name="aw_whill_interface_param_path" default="$(find-pkg-share aw_whill_interface)/config/aw_whill_interface.param.yaml"/>
+
+  <node pkg="aw_whill_interface" exec="aw_whill_interface_node" name="aw_whill_interface" output="screen">
+  	<param from="$(var aw_whill_interface_param_path)"/>
+
+  	<remap from="~/input/command" to="/control/command/control_cmd"/>
+    <remap from="~/output/command" to="/whill/controller/joy"/>
+  </node>
+
+</launch>
