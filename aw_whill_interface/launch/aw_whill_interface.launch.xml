@@ -4,8 +4,8 @@
   <node pkg="aw_whill_interface" exec="aw_whill_interface_node" name="aw_whill_interface" output="screen">
   	<param from="$(var aw_whill_interface_param_path)"/>
 
-  	<remap from="~/input/command" to="/control/command/control_cmd"/>
-    <remap from="~/output/command" to="/whill/controller/joy"/>
+  	<remap from="~/input/autoware_command" to="/control/command/control_cmd"/>
+    <remap from="~/output/whill_command" to="/whill/controller/joy"/>
   </node>
 
 </launch>
