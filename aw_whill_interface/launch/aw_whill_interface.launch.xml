@@ -6,6 +6,10 @@
 
   	<remap from="~/input/autoware_command" to="/control/command/control_cmd"/>
     <remap from="~/output/whill_command" to="/whill/controller/velocity"/>
+
+  	<remap from="~/input/whill_odom" to="/whill/odom"/>
+    <remap from="~/output/aw_velocity" to="/vehicle/status/velocity_status"/>
+    <remap from="~/output/aw_steering" to="/vehicle/status/steering_status"/>
   </node>
 
   <node pkg="ros2_whill" exec="whill_modelc_controller" name="whill_modelc_controller" output="screen"></node>
