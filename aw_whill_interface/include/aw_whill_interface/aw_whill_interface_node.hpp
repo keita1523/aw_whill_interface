@@ -8,6 +8,7 @@
 #include "nav_msgs/msg/odometry.hpp"
 
 #include <cmath>    // abs() for float, and fabs()
+#include <unistd.h>
 
 namespace sample_module
 {

@@ -29,13 +29,17 @@ AwWhillInterface::AwWhillInterface(const rclcpp::NodeOptions & node_options)
   set_vel.longitudinal_velocity = 0.0;
   set_vel.lateral_velocity = 0.0;
   set_vel.heading_rate = 0.0;
+  set_vel.header.frame_id = "base_link";
+  set_vel.header.stamp = Node::now();
   pub_velocity_status_->publish(set_vel);
+
 
   pub_steering_status_ = this->create_publisher<AwSteering>("~/output/aw_steering", 1);
   AwSteering set_steer;
   set_steer.steering_tire_angle = 0.0;
+  set_steer.stamp = Node::now();
   pub_steering_status_->publish(set_steer);
-
+  // usleep(100 * 1000);
 }
 
 void AwWhillInterface::callbackAwCmd(const AwCmdType::ConstSharedPtr & msg)
@@ -69,8 +73,11 @@ void AwWhillInterface::callbackWhillOdom(const Odometry::ConstSharedPtr& msg)
     velocity.longitudinal_velocity = 0;
     steer_angle.steering_tire_angle = 0;
   }
-  steer_angle.stamp = msg->header.stamp;
-  velocity.header = msg->header;
+  steer_angle.stamp = Node::now();
+  velocity.header.stamp = Node::now();
+  velocity.header.frame_id = "base_link";
+  // steer_angle.stamp = msg->header.stamp;
+  // velocity.header = msg->header;
   RCLCPP_INFO(this->get_logger(),"velocity:%f, angle:%f", velocity.longitudinal_velocity, steer_angle.steering_tire_angle);
   pub_steering_status_->publish(steer_angle);
   pub_velocity_status_->publish(velocity);
