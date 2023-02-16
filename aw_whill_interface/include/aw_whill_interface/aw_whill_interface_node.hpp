@@ -27,6 +27,24 @@ public:
 private:
   void callbackAwCmd(const AwCmdType::ConstSharedPtr & msg);
   void callbackWhillOdom(const Odometry::ConstSharedPtr & msg);
+  bool limitAcceleration(
+    double prev_velocity,
+    double current_velocity,
+    double time,
+    double min_acc,
+    double max_acc
+  );
+  struct Param {
+    double max_velocity_;
+
+    double min_acc_;
+    double max_acc_;
+    double min_jerk_;
+    double max_jerk_;
+  };
+
+  Param param_;
+  // double prev_velocity;
 
 
   rclcpp::Subscription<AwCmdType>::SharedPtr sub_autoware_cmd_;
