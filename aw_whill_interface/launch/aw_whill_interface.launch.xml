@@ -1,7 +1,7 @@
 <launch>
   <arg name="aw_whill_interface_param_path" default="$(find-pkg-share aw_whill_interface)/config/aw_whill_interface.param.yaml"/>
   <arg name="common_param_path" default="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/common/common.param.yaml"/>
-  <arg name="motion_velocity_smoother_param_path" default="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/common/motion_velocity_smoother.param.yaml"/>
+  <arg name="motion_velocity_smoother_param_path" default="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/common/motion_velocity_smoother/motion_velocity_smoother.param.yaml"/>
 
   <node pkg="aw_whill_interface" exec="aw_whill_interface_node" name="aw_whill_interface" output="screen">
   	<param from="$(var aw_whill_interface_param_path)"/>
