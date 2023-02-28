@@ -27,7 +27,7 @@ public:
 private:
   void callbackAwCmd(const AwCmdType::ConstSharedPtr & msg);
   void callbackWhillOdom(const Odometry::ConstSharedPtr & msg);
-  bool limitAcceleration(
+  double limitAcceleration(
     double prev_velocity,
     double current_velocity,
     double time,
