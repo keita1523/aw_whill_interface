@@ -17,6 +17,8 @@
   </node>
 
   <node pkg="ros2_whill" exec="whill_modelc_controller" name="whill_modelc_controller" output="screen"></node>
-  <node pkg="ros2_whill" exec="whill_modelc_publisher" name="whill_modelc_publisher" output="screen"></node>
+  <node pkg="ros2_whill" exec="whill_modelc_publisher" name="whill_modelc_publisher" output="screen">
+    	<remap from="/whill/states/joint_state" to="/joint_states"/>
+  </node>
 
 </launch>
